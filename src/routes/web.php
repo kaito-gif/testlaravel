@@ -13,3 +13,7 @@ Route::get('/hello', function () {
 Route::get('/about', function () {
     return '<h1>会社概要</h1><p>私たちは素晴らしい会社です。</p>';
 });
+
+Route::get('/company', function () {
+    return view('company');
+});
