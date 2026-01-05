@@ -17,3 +17,15 @@ Route::get('/about', function () {
 Route::get('/company', function () {
     return view('company');
 });
+
+Route::get('/user/{id}', function ($id) {
+    return 'ユーザーID: ' . $id;
+});
+
+Route::get('/post/{category}/{id}', function ($category, $id) {
+    return "カテゴリ: {$category}, 記事ID: {$id}";
+});
+
+Route::get('/greeting/{name?}', function ($name = 'ゲスト') {
+    return "こんにちは、{$name}さん";
+});
