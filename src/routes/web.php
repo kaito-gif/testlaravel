@@ -29,3 +29,11 @@ Route::get('/post/{category}/{id}', function ($category, $id) {
 Route::get('/greeting/{name?}', function ($name = 'ゲスト') {
     return "こんにちは、{$name}さん";
 });
+
+Route::get('/profile/user', function () {
+    return 'プロフィールページ';
+})->name('profile');
+
+Route::get('/user/{id}', function ($id) {
+    return "ユーザーID: {$id}";
+})->name('user.show');

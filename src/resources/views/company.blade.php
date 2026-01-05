@@ -7,5 +7,13 @@
 </head>
 <body>
     <h1>カンパニーページです。</h1>
+
+    <a href="/profile">プロフィール</a>
+
+    <a href="{{ route('profile') }}">プロフィールルート</a>
+
+    <a href="{{ route('user.show', ['id' => 1]) }}">ユーザー1</a>
+
+    <a href="{{ route('user.show', ['id' => 100]) }}">ユーザー100</a>
 </body>
 </html>
