@@ -15,5 +15,9 @@
     <a href="{{ route('user.show', ['id' => 1]) }}">ユーザー1</a>
 
     <a href="{{ route('user.show', ['id' => 100]) }}">ユーザー100</a>
+
+    <a href="{{ route('admin.dashboard') }}">admin/dashboard</a>
+
+    <a href="{{ route('admin.users') }}">admin/users</a>
 </body>
 </html>

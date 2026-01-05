@@ -37,3 +37,13 @@ Route::get('/profile/user', function () {
 Route::get('/user/{id}', function ($id) {
     return "ユーザーID: {$id}";
 })->name('user.show');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        return '管理画面ダッシュボード';
+    })->name('dashboard');  // ルート名: admin.dashboard
+
+    Route::get('/users', function () {
+        return 'ユーザー管理';
+    })->name('users');      // ルート名: admin.users
+});
