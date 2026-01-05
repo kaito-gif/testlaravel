@@ -5,3 +5,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hello', function () {
+    return 'Hello, World!!!!!!';
+});
+
+Route::get('/about', function () {
+    return '<h1>会社概要</h1><p>私たちは素晴らしい会社です。</p>';
+});
