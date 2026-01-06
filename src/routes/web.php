@@ -47,3 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return 'ユーザー管理';
     })->name('users');      // ルート名: admin.users
 });
+
+Route::get('/hello', function () {
+    return view('hello');
+});
