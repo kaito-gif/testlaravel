@@ -61,10 +61,9 @@ Route::get('/hello', function () {
 // });
 
 Route::get('/greeting', function () {
-    $name = 'katayama';
-    $age = 35;
+    $age = 12;
 
-    return view('greeting', compact('name', 'age'));
+    return view('greeting', compact('age'));
 });
 
 Route::get('/xss-demo', function () {
@@ -72,4 +71,10 @@ Route::get('/xss-demo', function () {
     $comment = '<strong>太字</strong>のテキスト';
 
     return view('xss-demo', compact('comment'));
+});
+
+Route::get('/users', function () {
+    $users = [];
+
+    return view('users', compact('users'));
 });
