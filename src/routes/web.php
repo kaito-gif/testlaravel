@@ -66,3 +66,10 @@ Route::get('/greeting', function () {
 
     return view('greeting', compact('name', 'age'));
 });
+
+Route::get('/xss-demo', function () {
+    // 攻撃者が入力したコメント（本来はフォームから受け取る）
+    $comment = '<strong>太字</strong>のテキスト';
+
+    return view('xss-demo', compact('comment'));
+});
