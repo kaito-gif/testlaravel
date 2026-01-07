@@ -26,9 +26,9 @@ Route::get('/post/{category}/{id}', function ($category, $id) {
     return "カテゴリ: {$category}, 記事ID: {$id}";
 });
 
-Route::get('/greeting/{name?}', function ($name = 'ゲスト') {
-    return "こんにちは、{$name}さん";
-});
+// Route::get('/greeting/{name?}', function ($name = 'ゲスト') {
+//     return "こんにちは、{$name}さん";
+// });
 
 Route::get('/profile/user', function () {
     return 'プロフィールページ';
@@ -50,4 +50,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::get('/hello', function () {
     return view('hello');
+});
+
+// Route::get('/greeting', function () {
+//     return view('greeting', ['name' => 'katayama']);
+// });
+
+// Route::get('/greeting', function () {
+//     return view('greeting')->with('name', '佐藤');
+// });
+
+Route::get('/greeting', function () {
+    $name = 'katayama';
+    $age = 35;
+
+    return view('greeting', compact('name', 'age'));
 });
