@@ -78,3 +78,15 @@ Route::get('/users', function () {
 
     return view('users', compact('users'));
 });
+
+Route::get('/layout/home', function () {
+    return view('pages.home');
+});
+
+Route::get('/layout/about', function () {
+    return view('pages.about');
+});
+
+Route::get('/layout/contact', function () {
+    return view('pages.contact');
+});
