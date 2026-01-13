@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,7 +46,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/users', function () {
         return 'ユーザー管理';
-    })->name('users');      // ルート名: admin.users
+    })->name('users');
 });
 
 Route::get('/hello', function () {
@@ -73,12 +74,6 @@ Route::get('/xss-demo', function () {
     return view('xss-demo', compact('comment'));
 });
 
-Route::get('/users', function () {
-    $users = [];
-
-    return view('users', compact('users'));
-});
-
 Route::get('/layout/home', function () {
     return view('pages.home');
 });
@@ -94,3 +89,6 @@ Route::get('/layout/contact', function () {
 Route::get('/component-demo', function () {
     return view('component-demo');
 });
+
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{id}', [UserController::class, 'show']);
