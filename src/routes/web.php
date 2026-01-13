@@ -90,3 +90,7 @@ Route::get('/layout/about', function () {
 Route::get('/layout/contact', function () {
     return view('pages.contact');
 });
+
+Route::get('/component-demo', function () {
+    return view('component-demo');
+});
