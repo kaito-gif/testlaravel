@@ -42,6 +42,9 @@
 </head>
 <body>
     <h1>商品一覧</h1>
+
+    <p><a href="/products/create" style="background: #3183ff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block; margin-bottom: 20px;">新規登録</a></p>
+
     <ul>
         @foreach($products as $product)
             <li>
