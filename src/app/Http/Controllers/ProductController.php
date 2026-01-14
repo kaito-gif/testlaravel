@@ -37,4 +37,22 @@ class ProductController extends Controller
 
         return view('products.show', compact('product'));
     }
+
+    // 商品登録フォームを表示
+    public function create()
+    {
+        return view('products.create');
+    }
+
+    // フォームから送信されたデータを処理
+    public function store(Request $request)
+    {
+        // 送信されたデータを取得
+        $name = $request->input('name');
+        $price = $request->input('price');
+        $description = $request->input('description');
+
+        // 今回は画面に表示するだけ（次の講座でDBに保存します）
+        return "商品「{$name}」(価格: " . number_format($price) . "円) を受け取りました！説明: {$description}";
+    }
 }
