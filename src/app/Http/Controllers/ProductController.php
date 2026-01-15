@@ -46,14 +46,14 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // フォームデータを確認
-        dd($request->all());
+        // バリデーション（入力チェック）
+        $validated = $request->validate([
+            'name' => 'required|max:100',
+            'price' => 'required|integer|min:0|max:10000000',
+            'description' => 'required|max:500',
+        ]);
 
-        // 出力例:
-        // [
-        //   "name" => "ノートPC"
-        //   "price" => "80000"
-        //   "description" => "高性能なノートパソコン"
-        // ]
+        // バリデーションが成功した場合のみここに到達
+        return "商品「{$validated['name']}」(価格: " . number_format($validated['price']) . "円) を受け取りました！説明: {$validated['description']}";
     }
 }
