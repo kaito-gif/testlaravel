@@ -44,16 +44,32 @@ class ProductController extends Controller
         return view('products.create');
     }
 
+
     public function store(Request $request)
     {
         // バリデーション（入力チェック）
+        // 第2引数のカスタムメッセージは、Laravel-langパッケージを使えば省略できます
         $validated = $request->validate([
             'name' => 'required|max:100',
             'price' => 'required|integer|min:0|max:10000000',
             'description' => 'required|max:500',
+        ], [
+            // カスタムメッセージ（学習用に明示的に記述）
+            // Laravel-langを使う場合は、この配列を省略して自動翻訳されたメッセージを使えます
+            'name.required' => '商品名は必須です',
+            'name.max' => '商品名は100文字以内で入力して！',
+            'price.required' => '価格は必須です',
+            'price.integer' => '価格は整数で入力してください',
+            'price.min' => '価格は0円以上で入力してください',
+            'price.max' => '価格は1000万円以下で入力してください',
+            'description.required' => '説明は必須です',
+            'description.max' => '説明は500文字以内で入力してください',
         ]);
 
-        // バリデーションが成功した場合のみここに到達
-        return "商品「{$validated['name']}」(価格: " . number_format($validated['price']) . "円) を受け取りました！説明: {$validated['description']}";
+        // ここでは実際の保存処理は行わない（次の講座でDB保存を学びます）
+
+        // 商品一覧ページにリダイレクトし、成功メッセージを表示
+        return redirect('/products')
+            ->with('success', "商品「{$validated['name']}」を登録しました！");
     }
 }
