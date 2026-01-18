@@ -40,20 +40,27 @@
         }
     </style>
 </head>
-<body>
-    <h1>商品一覧</h1>
+    <body>
+        <h1>商品一覧</h1>
 
-    <p><a href="/products/create" style="background: #3183ff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block; margin-bottom: 20px;">新規登録</a></p>
+        <!-- 成功メッセージの表示（追加） -->
+        @if(session('success'))
+            <div style="background: #d4edda; border: 1px solid #28a745; color: #155724; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+                ✅ {{ session('success') }}
+            </div>
+        @endif
 
-    <ul>
-        @foreach($products as $product)
-            <li>
-                <a href="/products/{{ $product['id'] }}">
-                    {{ $product['name'] }}
-                </a>
-                <span class="price"> - {{ number_format($product['price']) }}円</span>
-            </li>
-        @endforeach
-    </ul>
-</body>
+        <p><a href="/products/create" style="background: #3183ff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block; margin-bottom: 20px;">新規登録</a></p>
+
+        <ul>
+            @foreach($products as $product)
+                <li>
+                    <a href="/products/{{ $product['id'] }}">
+                        {{ $product['name'] }}
+                    </a>
+                    <span class="price"> - {{ number_format($product['price']) }}円</span>
+                </li>
+            @endforeach
+        </ul>
+    </body>
 </html>
