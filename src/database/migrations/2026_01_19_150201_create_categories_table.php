@@ -8,15 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('category')->nullable()->after('name');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->comment('カテゴリー名');
+            $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('category');
-        });
+        Schema::dropIfExists('categories');
     }
 };
