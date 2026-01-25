@@ -15,6 +15,12 @@ return new class extends Migration
             $table->integer('price')->comment('価格');
             $table->integer('stock')->default(0)->comment('在庫数');
             $table->boolean('is_published')->default(false)->comment('公開状態');
+
+            // 外部キー
+            $table->foreignId('category_id')
+                ->constrained()           // categories テーブルを参照
+                ->onDelete('restrict');   // カテゴリーに商品がある場合は削除不可
+
             $table->timestamps();
         });
     }
